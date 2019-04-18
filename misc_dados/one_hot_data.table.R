@@ -14,7 +14,7 @@ one_hot <- function(dados, id_var, coded_var){
                \t \t  tmp <- ",paste0("dados[, .(", id_var, ",", coded_var, ")] \n")))
     tmp <- tmp[!duplicated(tmp)]
   }
-  melted  <- data.table::melt(dados, id = id_var, value.factor = F, na.rm=TRUE)
+  melted  <- data.table::melt(tmp, id = id_var, value.factor = F, na.rm=TRUE)
   one_hot_ <- data.table::dcast(melted, eval(parse(text = paste0(id_var, " ~ value")) ),
                                drop = T, fun.aggregate = length)
   return(one_hot_)
