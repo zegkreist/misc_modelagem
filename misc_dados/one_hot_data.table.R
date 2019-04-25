@@ -19,3 +19,15 @@ one_hot <- function(dados, id_var, coded_var){
                                drop = T, fun.aggregate = length)
   return(one_hot_)
 }
+
+
+
+## EXEMPLO 
+
+
+# tmp <- treino[, .(IdBeneficiario, CID)]
+# tmp[is.na(CID), CID := "nenhum"]
+# tmp <- tmp[!duplicated(tmp)]
+# a <- one_hot(dados = treino,
+#              id_var = "IdBeneficiario",
+#              coded_var = "CID")

@@ -16,6 +16,17 @@ j_count <- function(coluna_alvo,
   }
 
 
+# tmp <- treino[, .(Id, Dt, alvo)]
+# tmp <- tmp[!duplicated(tmp)]
+# setkey(tmp, Id)
+# tmp[,
+#     eval(j_count(coluna_alvo = "alvo",
+#                  vetor_niveis_unicos = niveis,
+#                  nome_colunas = string_selecao)
+#     ),
+#     by = .(Id), verbose = 1
+#     ]
+
 pull_right <- function(columns,
                        exceptions = NULL){
   if(is.null(exceptions)){
