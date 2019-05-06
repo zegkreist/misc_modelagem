@@ -8,6 +8,7 @@ require(magrittr)
 
 xgb_select_params <- function(dados,
                               positivos,
+                              var_id      = NULL,
                               metrica     = "logloss",
                               objetivo    = "binary:logistic",
                               niter       = 100, 
@@ -93,8 +94,12 @@ xgb_select_params <- function(dados,
    }
   cat(paste0("Criando uma amostra balanceada para as iterações \t \t \t \t ---- \n"))
   
+  
   treino <- dados[,.SD[sample(.N, positivos,replace = T)],by = target]
-
+  if(!is.null(var_id)){
+    eval(parse(text = paste0("treino[,", var_id," := NULL]")))  
+  }
+  
   if(objetivo %in% c("multi:softmax", "multi:softprob")){
     num_class <- length(unique(treino$target))
   }
