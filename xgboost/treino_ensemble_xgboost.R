@@ -117,7 +117,7 @@ xgb_treino_ensemble <- function(dados,
     
     try({
       importance[[j]] <- xgb.importance(model = md)
-      saveRDS(importance, file = paste0(folder_to_save, "/importancia_modelo_", j, ".RDS"))
+
     })
     
     
@@ -128,6 +128,9 @@ xgb_treino_ensemble <- function(dados,
     rm(md)
     gc(reset = T)
   }
+  try({
+    saveRDS(importance, file = paste0(folder_to_save, "/importancia_modelos",".RDS"))
+  })
   
 }
 
